@@ -15,7 +15,9 @@ message(STATUS "System: ${CMAKE_SYSTEM_NAME}")
 ADD_DEFINITIONS(-DPROJECT_DIR="${PROJECT_SOURCE_DIR}")
 
 if(${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
+#    set(CMAKE_PREFIX_PATH "D:/software/Qt/6.7.2/msvc2019_64")
     set(CMAKE_PREFIX_PATH "D:/software/Qt/6.7.2/msvc2019_64")
+
 elseif(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
     set(CMAKE_PREFIX_PATH "/path/to/qt/on/linux")
 elseif(${CMAKE_SYSTEM_NAME} STREQUAL "Darwin")
