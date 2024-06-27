@@ -1,24 +1,20 @@
-//
-// Created by uyplayer on 2024-06-27.
 #ifndef PDFGLIMPSE_CRYPTOLOGY_H
 #define PDFGLIMPSE_CRYPTOLOGY_H
 
 #include <iostream>
 #include <string>
 
-
 class Cryptology {
 public:
     Cryptology() = default;
-private:
-     const std::string publicPemPath{"/resources/keys/public.pem"};
-     const std::string privateKeyPath{"/resources/keys/private.key"};
 
-     const std::string readPem();
-     const std::string readPrivateKey();
+    static std::string readPem();
+
+    static std::string readPrivateKey();
+
+private:
+    static const std::string publicPemPath;
+    static const std::string privateKeyPath;
 };
 
-
-
-#endif //PDFGLIMPSE_CRYPTOLOGY_H
-
+#endif // PDFGLIMPSE_CRYPTOLOGY_H
