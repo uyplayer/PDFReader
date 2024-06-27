@@ -7,7 +7,7 @@ int main(int argc, char* argv[])
 {
 
     std::cout << "Hello PDFGlimpse !" << std::endl;
-    std::cout << "Project dir "<< Project_Dir   << std::endl;
+    std::cout << "Project dir "<< PROJECT_DIR   << std::endl;
 
     QApplication app(argc, argv);
     mainWindow mainWindow;
