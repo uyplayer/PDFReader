@@ -24,7 +24,7 @@
 ## Clion 配置
 ### 修改toolchain
 - File -> Settings -> Build, Execution, Deployment -> Toolchains
-- toolchain 修改为指定QT安装目录下tools对应的编译环境
+- toolchain 修改为指定QT安装目录下tools对应的编译环境或者其他编译环境
 ### 修改cmake 
 - File -> Settings -> Build, Execution, Deployment -> CMake
 ### 修改CMakelist.txt
