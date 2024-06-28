@@ -3,22 +3,21 @@
 
 #include <iostream>
 #include <string>
-#include "rsa.h"
+#include <rsa.h>
 
 class Cryptology {
 public:
     Cryptology() = default;
 
-    // 加密和解密
-    std::string encrypt(const std::string &content);
-    std::string decrypt(const std::string &encryptedContent);
+    static std::string encrypt(const std::string &plaintext);
+    static std::string decrypt(const std::string &ciphertext);
 
 private:
     static const std::string publicPemPath;
     static const std::string privateKeyPath;
 
-    void loadPublicKey(const std::string &filename, CryptoPP::RSA::PublicKey &key);
-    void loadPrivateKey(const std::string &filename, CryptoPP::RSA::PrivateKey &key);
+    static void loadPublicKey(CryptoPP::RSA::PublicKey &key);
+    static void loadPrivateKey(CryptoPP::RSA::PrivateKey &key);
 };
 
 #endif // PDFGLIMPSE_CRYPTOLOGY_H
