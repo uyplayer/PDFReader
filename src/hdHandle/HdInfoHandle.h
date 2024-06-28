@@ -40,7 +40,7 @@ private:
     std::string systemArch;
     std::string systemHostname;
     std::string macAddress;
-    std::string key{"98140402-4682-1067-d47c-4a481818b671"};
+    static std::string key_info;
 };
 
 #endif //HDINFOHANDLE_H

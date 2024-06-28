@@ -9,19 +9,21 @@
 #include <iomanip>
 #include <QString>
 
+
+
+std::string HdInfoHandle::key_info = "";
+
+
 void HdInfoHandle::generate() {
     systemName = QSysInfo::prettyProductName().toStdString();
     systemVersion = QSysInfo::productVersion().toStdString();
     systemKernel = QSysInfo::kernelType().toStdString();
     systemArch = QSysInfo::currentCpuArchitecture().toStdString();
     systemHostname = QSysInfo::machineHostName().toStdString();
-    std::cout << "System Name: " << systemName << std::endl;
-    std::cout << "System Version: " << systemVersion << std::endl;
-    std::cout << "System Kernel: " << systemKernel << std::endl;
-    std::cout << "System Architecture: " << systemArch << std::endl;
-    std::cout << "System Hostname: " << systemHostname << std::endl;
     macAddress = getMacAddress();
-    std::cout << "MAC Address: " << macAddress << std::endl;
+    key_info = systemName + systemVersion + systemKernel + systemArch + systemHostname + macAddress;
+    key_info.erase(std::remove(key_info.begin(), key_info.end(), ' '), key_info.end());
+    std::cout  << "key_info : " << key_info << std::endl;
 }
 
 std::string HdInfoHandle::getMacAddress() {
