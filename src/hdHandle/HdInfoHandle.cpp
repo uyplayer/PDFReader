@@ -11,13 +11,13 @@
 
 
 
-std::string HdInfoHandle::key_info = "";
-std::string HdInfoHandle::systemName = "";
-std::string HdInfoHandle::systemVersion = "";
-std::string HdInfoHandle::systemKernel = "";
-std::string HdInfoHandle::systemArch = "";
-std::string HdInfoHandle::systemHostname = "";
-std::string HdInfoHandle::macAddress = "";
+std::string HdInfoHandle::key_info;
+std::string HdInfoHandle::systemName;
+std::string HdInfoHandle::systemVersion;
+std::string HdInfoHandle::systemKernel;
+std::string HdInfoHandle::systemArch;
+std::string HdInfoHandle::systemHostname;
+std::string HdInfoHandle::macAddress;
 
 
 
