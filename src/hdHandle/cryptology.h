@@ -12,6 +12,9 @@ public:
 
     static std::string readPrivateKey();
 
+    std::string encrypt(const std::string &contecnt);
+    std::string dycrypt(const std::string &contecnt);
+
 private:
     static const std::string publicPemPath;
     static const std::string privateKeyPath;

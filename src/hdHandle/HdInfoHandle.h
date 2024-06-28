@@ -28,18 +28,18 @@ class HdInfoHandle {
 public:
     HdInfoHandle() = default;
 
-    void generate();
+    static void generate();
 
 private:
     static std::string getMacAddress();
 
 
-    std::string systemName;
-    std::string systemVersion;
-    std::string systemKernel;
-    std::string systemArch;
-    std::string systemHostname;
-    std::string macAddress;
+    static std::string systemName;
+    static std::string systemVersion;
+    static std::string systemKernel;
+    static std::string systemArch;
+    static std::string systemHostname;
+    static std::string macAddress;
     static std::string key_info;
 };
 

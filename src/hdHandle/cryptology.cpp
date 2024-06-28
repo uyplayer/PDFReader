@@ -32,3 +32,4 @@ std::string Cryptology::readPrivateKey() {
     file.close();
     return content;
 }
+
