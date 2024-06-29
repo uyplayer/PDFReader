@@ -41,14 +41,25 @@ void Viewer::zoomInClicked() const {
     if (pdfView && pdfDocument) {
         pdfView->setZoomMode(QPdfView::ZoomMode::Custom);
         qreal currentZoom = pdfView->zoomFactor();
-        pdfView->setZoomFactor(currentZoom * 1.1);
+        qreal newZoom = currentZoom * 1.1;
+        qreal maxZoomFactor = 2.5;
+        if (newZoom > maxZoomFactor) {
+            newZoom = maxZoomFactor;
+        }
+        pdfView->setZoomFactor(newZoom);
     }
 }
 
-void Viewer::zoomOutClicked() const  {
+
+void Viewer::zoomOutClicked() const {
     if (pdfView && pdfDocument) {
         pdfView->setZoomMode(QPdfView::ZoomMode::Custom);
         qreal currentZoom = pdfView->zoomFactor();
-        pdfView->setZoomFactor(currentZoom / 1.1);
+        qreal minZoomFactor = 0.5;
+        if (currentZoom / 1.1 > minZoomFactor) {
+            pdfView->setZoomFactor(currentZoom / 1.1);
+        } else {
+            pdfView->setZoomFactor(minZoomFactor);
+        }
     }
 }
