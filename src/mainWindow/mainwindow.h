@@ -12,7 +12,8 @@
 #include "viewer.h"
 #include "contents.h"
 #include "HdInfoHandle.h"
-
+#include <QPushButton>
+#include <QToolBar>
 
 
 QT_BEGIN_NAMESPACE
@@ -31,14 +32,18 @@ public:
 
     ~mainWindow() override;
 
+
 private:
+
     Ui::mainWindow *ui;
     QSplitter *splitter;
     Viewer *viewer;
     Contents *contents;
     HdInfoHandle *hdInfoHandle;
-
-
+    QPushButton *zoom_in;
+    QPushButton *zoom_out;
+    QToolBar *toolBar;
+    QWidget *spacerWidgetTop;
 protected:
     void closeEvent(QCloseEvent *event) override {
         QWidget::closeEvent(event);

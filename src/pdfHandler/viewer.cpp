@@ -29,8 +29,26 @@ void Viewer::openPdfFile(QSplitter *splitter) {
         pdfDocument->load(pdfPath);
         pdfView->setPageMode(QPdfView::PageMode::MultiPage);
         pdfView->setDocument(pdfDocument);
+        pdfView->setZoomFactor(1);
         auto *contents = qobject_cast<Contents *>(splitter->widget(0));
         contents->loadPdfBookmarks(pdfDocument, pdfView, splitter);
+
     }
 
+}
+
+void Viewer::zoomInClicked() const {
+    if (pdfView && pdfDocument) {
+        pdfView->setZoomMode(QPdfView::ZoomMode::Custom);
+        qreal currentZoom = pdfView->zoomFactor();
+        pdfView->setZoomFactor(currentZoom * 1.1);
+    }
+}
+
+void Viewer::zoomOutClicked() const  {
+    if (pdfView && pdfDocument) {
+        pdfView->setZoomMode(QPdfView::ZoomMode::Custom);
+        qreal currentZoom = pdfView->zoomFactor();
+        pdfView->setZoomFactor(currentZoom / 1.1);
+    }
 }

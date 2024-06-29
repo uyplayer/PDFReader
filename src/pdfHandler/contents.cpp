@@ -28,6 +28,7 @@ void Contents::loadPdfBookmarks(QPdfDocument *pdfDocument, QPdfView *pdfView, co
     this->pdfDocument = pdfDocument;
     this->pdfView = pdfView;
 
+
     if (!pdfDocument) {
         std::cerr << "Error: pdfDocument is null." << std::endl;
         return;

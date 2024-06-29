@@ -33,6 +33,7 @@ private:
     QPdfPageNavigator *pageNavigator;
     QPdfBookmarkModel *model{};
 
+
 private slots:
 
     void onBookmarkClicked(const QModelIndex &index) const;

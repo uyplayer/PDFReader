@@ -11,6 +11,7 @@
 #include <QtPdfWidgets/QPdfView>
 #include <QSplitter>
 #include "contents.h"
+#include <QWheelEvent>
 
 class Viewer : public QWidget {
 Q_OBJECT
@@ -19,14 +20,14 @@ public:
     explicit Viewer(QWidget *parent);
 
     ~Viewer() override;
-
 private:
     QPdfDocument *pdfDocument;
     QPdfView *pdfView;
     QVBoxLayout *layout{};
 
 public slots:
-
+    void zoomInClicked() const ;
+    void zoomOutClicked() const ;
     void openPdfFile(QSplitter *splitter);
 };
 
