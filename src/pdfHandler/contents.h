@@ -21,6 +21,10 @@ Q_OBJECT
 public:
     explicit Contents(QWidget *parent);
 
+    Contents(const Contents &other) = delete;
+    Contents &operator=(const Contents &other) = delete;
+
+
     ~Contents() override;
 
     void loadPdfBookmarks(QPdfDocument *pdfDocument, QPdfView *pdfView, const QSplitter *splitter);

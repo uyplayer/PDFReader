@@ -18,7 +18,8 @@ Q_OBJECT
 
 public:
     explicit Viewer(QWidget *parent);
-
+    Viewer(const Viewer &other) = delete;
+    Viewer &operator=(const Viewer &other) = delete;
     ~Viewer() override;
 private:
     QPdfDocument *pdfDocument;

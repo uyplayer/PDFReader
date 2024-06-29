@@ -30,6 +30,10 @@ Q_OBJECT
 public:
     explicit mainWindow(QWidget *parent = nullptr);
 
+
+    mainWindow(const mainWindow &other) = delete;
+    mainWindow& operator =(const mainWindow &other) = delete;
+
     ~mainWindow() override;
 
 
