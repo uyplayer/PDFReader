@@ -47,8 +47,6 @@ std::string Cryptology::encrypt(const std::string &plaintext) {
         std::cerr << e.what() << std::endl;
         exit(1);
     }
-
-    // Base64编码
     std::string encodedCiphertext;
     StringSource(ciphertext, true,
         new Base64Encoder(

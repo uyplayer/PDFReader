@@ -98,7 +98,7 @@
   </action>
   <action name="Generate">
    <property name="text">
-    <string>Generate</string>
+    <string>Generate UUID</string>
    </property>
    <property name="font">
     <font/>

@@ -12,40 +12,59 @@
 #include <QVBoxLayout>
 #include <QClipboard>
 #include <QApplication>
+#include <cryptology.h>
+#include <QCryptographicHash>
+#include <QScreen>
 
 class KeyInfoDialog : public QDialog {
-Q_OBJECT
+    Q_OBJECT
 
 public:
     explicit KeyInfoDialog(const std::string &keyInfo, QWidget *parent = nullptr) : QDialog(parent) {
+        QCryptographicHash hash(QCryptographicHash::Sha256);
+        hash.addData(keyInfo.c_str(), keyInfo.length());
+        QByteArray hashResult = hash.result();
+        auto hash_uuid = QString(hashResult.toHex());
+
+        setWindowTitle("UUID");
+        setWindowIcon(QIcon(":/icon/icon/app_books.png"));
+
+        // 获取屏幕几何信息
+        QScreen *screen = QGuiApplication::primaryScreen();
+        QRect screenGeometry = screen->geometry();
+
+        // 计算窗口居中位置
+        int x = screenGeometry.center().x() - width() / 2;
+        int y = screenGeometry.center().y() - height() / 2;
+
+        // 设置窗口初始大小和位置
+        setGeometry(x, y, 600, 200);
+
         auto layout = new QVBoxLayout(this);
-        auto label = new QLabel(QString::fromStdString(keyInfo), this);
+        auto label = new QLabel(hash_uuid, this);
+
         auto button = new QPushButton("Copy", this);
-
-        // 设置窗口样式
-        this->setStyleSheet("background-color: #333; color: #fff;");
-        // 设置按钮大小
-
-
-        // 设置标签样式
+        setStyleSheet("background-color: #333; color: #fff;");
         label->setStyleSheet("font-size: 16px; padding: 10px;");
-
-        // 设置按钮样式
         button->setStyleSheet(
-                "background-color: #4CAF50; color: white; border: none; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;");
+            "QPushButton { background-color: #4CAF50; color: white; border: none; padding: 5px 10px; font-size: 16px; }"
+            "QPushButton:hover { background-color: #45a049; }"
+        );
+        button->setFixedSize(150, 50);
+
+        auto hLayout = new QHBoxLayout();
+        hLayout->addStretch();
+        hLayout->addWidget(button);
+        hLayout->addStretch();
 
         layout->addWidget(label);
-        layout->addWidget(button);
+        layout->addLayout(hLayout);
 
-        connect(button, &QPushButton::clicked, this, [this, keyInfo]() {
-            QClipboard *clipboard = QApplication::clipboard();
-            clipboard->setText(QString::fromStdString(keyInfo));
+        connect(button, &QPushButton::clicked, this, [this,hash_uuid]() {
+            QApplication::clipboard()->setText(hash_uuid);
             this->close();
         });
-
-
     }
-
 };
 
 #endif //PDFGLIMPSE_KEYINFODIALOG_H

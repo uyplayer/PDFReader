@@ -5,6 +5,8 @@
 #include "contents.h"
 #include <iostream>
 
+
+
 Contents::Contents(QWidget *parent)
         : QWidget(parent), treeView(new QTreeView(this)), layout(new QVBoxLayout(this)), pdfDocument(nullptr),
           pdfView(nullptr), pageNavigator(nullptr) {
@@ -27,13 +29,11 @@ Contents::~Contents() {
 void Contents::loadPdfBookmarks(QPdfDocument *pdfDocument, QPdfView *pdfView, const QSplitter *splitter) {
     this->pdfDocument = pdfDocument;
     this->pdfView = pdfView;
-
-
     if (!pdfDocument) {
         std::cerr << "Error: pdfDocument is null." << std::endl;
         return;
     }
-
+    std::cout << "Loading bookmarks..." << std::endl;
     model = new QPdfBookmarkModel(this);
     model->setDocument(pdfDocument);
     treeView->setModel(model);
@@ -51,8 +51,6 @@ void Contents::onBookmarkClicked(const QModelIndex &index) const {
     if (!index.isValid() || !pdfDocument) {
         return;
     }
-    if (!index.isValid())
-        return;
     const int page = index.data(int(QPdfBookmarkModel::Role::Page)).toInt();
     const qreal zoomLevel = index.data(int(QPdfBookmarkModel::Role::Level)).toReal();
     this->pdfView->pageNavigator()->jump(page, {}, zoomLevel);

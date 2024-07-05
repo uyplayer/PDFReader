@@ -31,8 +31,6 @@ void HdInfoHandle::generate() {
     macAddress = getMacAddress();
     key_info = systemName + systemVersion + systemKernel + systemArch + systemHostname + macAddress;
     key_info.erase(std::remove(key_info.begin(), key_info.end(), ' '), key_info.end());
-    std::cout  << "key_info : " << key_info << std::endl;
-
     KeyInfoDialog dialog(key_info);
     dialog.exec();
 }
