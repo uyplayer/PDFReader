@@ -43,7 +43,7 @@ public:
         auto layout = new QVBoxLayout(this);
         auto label = new QLabel(hash_uuid, this);
 
-        auto button = new QPushButton("Copy", this);
+        auto button = new QPushButton("Copy UUID", this);
         setStyleSheet("background-color: #333; color: #fff;");
         label->setStyleSheet("font-size: 16px; padding: 10px;");
         button->setStyleSheet(
@@ -59,6 +59,9 @@ public:
 
         layout->addWidget(label);
         layout->addLayout(hLayout);
+
+
+        std::cout << "UUID: " << hash_uuid.toStdString() << std::endl;
 
         connect(button, &QPushButton::clicked, this, [this,hash_uuid]() {
             QApplication::clipboard()->setText(hash_uuid);
