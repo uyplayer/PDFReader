@@ -51,6 +51,7 @@ add_executable(PDFGlimpse
         src/hdHandle/HdInfoHandle.cpp
         src/hdHandle/cryptology.cpp
         ${QRC_FILES}
+        src/hdHandle/KeyInfoDialog.h
 
 )
 
