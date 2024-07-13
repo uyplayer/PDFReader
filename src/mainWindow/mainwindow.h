@@ -1,5 +1,5 @@
 //
-// Created by uyplayer on 2024-06-01.
+// Created by  on 2024-06-01.
 //
 
 #ifndef MAINWINDOW_H

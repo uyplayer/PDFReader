@@ -1,5 +1,5 @@
 //
-// Created by uyplayer on 2024-06-23.
+// Created by  on 2024-06-23.
 //
 
 #include "HdInfoHandle.h"
@@ -95,3 +95,17 @@ std::string HdInfoHandle::getMacAddress() {
     return macAddress;
 }
 
+
+
+
+std::string HdInfoHandle::get_key_info() {
+    systemName = QSysInfo::prettyProductName().toStdString();
+    systemVersion = QSysInfo::productVersion().toStdString();
+    systemKernel = QSysInfo::kernelType().toStdString();
+    systemArch = QSysInfo::currentCpuArchitecture().toStdString();
+    systemHostname = QSysInfo::machineHostName().toStdString();
+    macAddress = getMacAddress();
+    key_info = systemName + systemVersion + systemKernel + systemArch + systemHostname + macAddress;
+    key_info.erase(std::remove(key_info.begin(), key_info.end(), ' '), key_info.end());
+    return key_info;
+}

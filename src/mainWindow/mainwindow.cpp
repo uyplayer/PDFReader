@@ -1,5 +1,5 @@
 //
-// Created by uyplayer on 2024-06-01.
+// Created by  on 2024-06-01.
 //
 
 // You may need to build the project (run Qt uic code generator) to get "ui_mainWindow.h" resolved
@@ -12,6 +12,7 @@ mainWindow::mainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::mainWi
     ui->setupUi(this);
     this->setWindowTitle("PDF Viewer");
     this->setWindowIcon(QIcon(":/icon/icon/app_books.png"));
+
 
     QIcon zoomInIcon(":/icon/icon/zoomin.png");
     zoom_in = new QPushButton(zoomInIcon, "", this);

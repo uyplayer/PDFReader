@@ -20,7 +20,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>C:/Users/uyplayer/resource/icon/app_books.png</normaloff>C:/Users/uyplayer/resource/icon/app_books.png</iconset>
+    <normaloff>C:/Users//resource/icon/app_books.png</normaloff>C:/Users//resource/icon/app_books.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget"/>
   <widget class="QMenuBar" name="menubar">

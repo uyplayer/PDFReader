@@ -1,5 +1,5 @@
 //
-// Created by uyplayer on 2024-07-05.
+// Created by  on 2024-07-05.
 //
 
 #ifndef PDFGLIMPSE_KEYINFODIALOG_H

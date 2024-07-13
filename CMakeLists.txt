@@ -21,7 +21,7 @@ if(${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
 elseif(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
     set(CMAKE_PREFIX_PATH "/path/to/qt/on/linux")
 elseif(${CMAKE_SYSTEM_NAME} STREQUAL "Darwin")
-    set(CMAKE_PREFIX_PATH "/Users/uyplayer/Qt/6.5.3/macos")
+    set(CMAKE_PREFIX_PATH "/Users//Qt/6.5.3/macos")
 endif()
 
 find_package(Qt6 REQUIRED COMPONENTS
@@ -41,7 +41,7 @@ message(STATUS "Qt6 PdfWidgets: ${Qt6PdfWidgets_DIR}")
 set(QRC_SOURCE_FILE resources/application.qrc)
 qt_add_resources(QRC_FILES ${QRC_SOURCE_FILE})
 
-add_executable(PDFGlimpse
+set(SOURCES
         main.cpp
         src/mainWindow/mainwindow.cpp
         src/mainWindow/mainwindow.h
@@ -54,6 +54,21 @@ add_executable(PDFGlimpse
         src/hdHandle/KeyInfoDialog.h
 
 )
+
+
+if(WIN32)
+    if(CMAKE_BUILD_TYPE STREQUAL "Release")
+        # Windows的Release模式下使用WIN32选项生成窗口应用程序
+        add_executable(${PROJECT_NAME} WIN32 ${SOURCES})
+    else()
+        add_executable(${PROJECT_NAME} ${SOURCES})
+    endif()
+elseif(APPLE)
+    message(STATUS "APPLE")
+else()
+    message(STATUS "LINUX")
+endif()
+
 
 include_directories(
         ${PROJECT_SOURCE_DIR}/src/mainWindow

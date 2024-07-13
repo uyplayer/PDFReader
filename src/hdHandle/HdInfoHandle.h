@@ -1,5 +1,5 @@
 //
-// Created by uyplayer on 2024-06-23.
+// Created by  on 2024-06-23.
 //
 
 #ifndef HDINFOHANDLE_H
@@ -29,6 +29,7 @@ public:
     HdInfoHandle() = default;
 
     static void generate();
+    static std::string get_key_info() ;
 
 private:
     static std::string getMacAddress();
