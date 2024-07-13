@@ -44,6 +44,8 @@ message(STATUS "Qt6 PdfWidgets: ${Qt6PdfWidgets_DIR}")
 
 set(QRC_SOURCE_FILE resources/application.qrc)
 qt_add_resources(QRC_FILES ${QRC_SOURCE_FILE})
+set(Icon resources/version.rc)
+
 
 set(SOURCES
         main.cpp
@@ -54,6 +56,7 @@ set(SOURCES
         src/pdfHandler/contents.cpp
         src/hdHandle/HdInfoHandle.cpp
         ${QRC_FILES}
+        ${Icon}
         src/hdHandle/KeyInfoDialog.h
 
 )
