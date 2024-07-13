@@ -56,7 +56,7 @@ Viewer::~Viewer() {
 void Viewer::openPdfFile(QSplitter *splitter) {
     QString pdfPath = QFileDialog::getOpenFileName(this, tr("Open File"), "", tr("PDF Files (*.pdf);;All Files (*)"));
     if (pdfPath.isEmpty()) {
-        std::cout << "No file selected" << std::endl;
+        msgBox->warning(this, "Warning", "No file selected");
         return;
     }
 
@@ -65,7 +65,6 @@ void Viewer::openPdfFile(QSplitter *splitter) {
     // 将解密后的数据写入临时文件
     QTemporaryFile tempFile;
     if (!tempFile.open()) {
-        std::cout << "Failed to create temporary file" << std::endl;
         return;
     }
     tempFile.write(decryptedData);
@@ -74,14 +73,17 @@ void Viewer::openPdfFile(QSplitter *splitter) {
     // 设置布局
     splitter->show();
     pdfDocument->load(tempFile.fileName());
+    auto loadResult = pdfDocument->load(tempFile.fileName());
+    if (pdfDocument->error() != QPdfDocument::Error::None) {
+        msgBox->warning(this, "Warning", "Failed to open PDF file.");
+        return;
+    }
     pdfView->setPageMode(QPdfView::PageMode::MultiPage);
     pdfView->setDocument(pdfDocument);
     pdfView->setZoomFactor(1);
+
     auto *contents = qobject_cast<Contents *>(splitter->widget(0));
     contents->loadPdfBookmarks(pdfDocument, pdfView, splitter);
-    if (contents) {
-        contents->loadPdfBookmarks(pdfDocument, pdfView, splitter);
-    }
     tempFile.remove();
 }
 
