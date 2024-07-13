@@ -12,7 +12,6 @@
 #include <QVBoxLayout>
 #include <QClipboard>
 #include <QApplication>
-#include <cryptology.h>
 #include <QCryptographicHash>
 #include <QScreen>
 
@@ -60,8 +59,6 @@ public:
         layout->addWidget(label);
         layout->addLayout(hLayout);
 
-
-        std::cout << "UUID: " << hash_uuid.toStdString() << std::endl;
 
         connect(button, &QPushButton::clicked, this, [this,hash_uuid]() {
             QApplication::clipboard()->setText(hash_uuid);

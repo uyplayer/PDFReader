@@ -14,14 +14,18 @@ message(STATUS "System: ${CMAKE_SYSTEM_NAME}")
 # 源码获取变量
 ADD_DEFINITIONS(-DPROJECT_DIR="${PROJECT_SOURCE_DIR}")
 
+# using vcpkg
+message(STATUS "VCPKG_ROOT_DIR: ${VCPKG_ROOT_DIR}")
+set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT_DIR}/scripts/buildsystems/vcpkg.cmake")
+
 if(${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
 #    set(CMAKE_PREFIX_PATH "D:/software/Qt/6.7.2/msvc2019_64")
     set(CMAKE_PREFIX_PATH "D:/Software/Qt/6.7.2/msvc2019_64")
 
 elseif(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
-    set(CMAKE_PREFIX_PATH "/path/to/qt/on/linux")
+    set(CMAKE_PREFIX_PATH "")
 elseif(${CMAKE_SYSTEM_NAME} STREQUAL "Darwin")
-    set(CMAKE_PREFIX_PATH "/Users//Qt/6.5.3/macos")
+    set(CMAKE_PREFIX_PATH "")
 endif()
 
 find_package(Qt6 REQUIRED COMPONENTS
@@ -49,7 +53,6 @@ set(SOURCES
         src/pdfHandler/viewer.cpp
         src/pdfHandler/contents.cpp
         src/hdHandle/HdInfoHandle.cpp
-        src/hdHandle/cryptology.cpp
         ${QRC_FILES}
         src/hdHandle/KeyInfoDialog.h
 
@@ -74,7 +77,6 @@ include_directories(
         ${PROJECT_SOURCE_DIR}/src/mainWindow
         ${PROJECT_SOURCE_DIR}/src/pdfHandler
         ${PROJECT_SOURCE_DIR}/src/hdHandle
-        ${PROJECT_SOURCE_DIR}/headers/cryptopp
 )
 
 link_directories(${CMAKE_SOURCE_DIR}/libs/cryptopp)
@@ -86,7 +88,6 @@ target_link_libraries(PDFGlimpse
         Qt6::Widgets
         Qt6::Pdf
         Qt6::PdfWidgets
-        ${CMAKE_SOURCE_DIR}/libs/cryptopp/cryptlib.lib
 )
 
 if(WIN32)
