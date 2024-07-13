@@ -17,8 +17,12 @@ mainWindow::mainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::mainWi
     QIcon zoomInIcon(":/icon/icon/zoomin.png");
     zoom_in = new QPushButton(zoomInIcon, "", this);
     zoom_in->setFixedSize(30, 30);
+    zoom_in->setStyleSheet("QPushButton {color: white; }"
+                       "QPushButton:pressed { background-color: #dddddd; }");
     QIcon zoomOutIcon(":/icon/icon/zoomout.png");
     zoom_out = new QPushButton(zoomOutIcon, "", this);
+    zoom_out->setStyleSheet("QPushButton {color: white; }"
+                        "QPushButton:pressed { background-color: #dddddd; }");
     zoom_out->setFixedSize(30, 30);
     toolBar = new QToolBar(this);
     toolBar->setMovable(false);
