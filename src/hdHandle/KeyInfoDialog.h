@@ -14,6 +14,7 @@
 #include <QApplication>
 #include <QCryptographicHash>
 #include <QScreen>
+#include <iostream>
 
 class KeyInfoDialog : public QDialog {
     Q_OBJECT

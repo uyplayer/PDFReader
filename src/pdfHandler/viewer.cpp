@@ -128,7 +128,6 @@ QByteArray Viewer::decryptPDFFiles(const QString &encryptedPdfFile) {
     std::cout << "uuid : " << uuid.toStdString()  << std::endl;
     std::cout << "keys : " << keys.toStdString()  << std::endl;
     QString new_uuid = uuid + keys;
-    std::cout << "new_uuid: " << new_uuid.toStdString() << std::endl;
     if (uuid.isEmpty()) {
         msgBox->warning(this, "Warning", "UUID is empty");
         return{};
