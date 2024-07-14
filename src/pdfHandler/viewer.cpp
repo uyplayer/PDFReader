@@ -142,7 +142,7 @@ QByteArray Viewer::decryptPDFFiles(const QString &encryptedPdfFile) {
     QByteArray encryptedData = file.readAll();
     file.close();
 
-    QByteArray key = QCryptographicHash::hash(new_uuid.toUtf8(), QCryptographicHash::Sha256);
+    QByteArray key = QCryptographicHash::hash(new_uuid.toUtf8(), QCryptographicHash::Sha3_512);
 
     int chunkSize = 1024 * 1024; // 1 MB
     int numChunks = encryptedData.size() / chunkSize + (encryptedData.size() % chunkSize == 0 ? 0 : 1);

@@ -15,6 +15,7 @@ message(STATUS "System: ${CMAKE_SYSTEM_NAME}")
 ADD_DEFINITIONS(-DPROJECT_DIR="${PROJECT_SOURCE_DIR}")
 
 # using vcpkg
+set(VCPKG_ROOT_DIR $ENV{VCPKG_ROOT_DIR})
 message(STATUS "VCPKG_ROOT_DIR: ${VCPKG_ROOT_DIR}")
 set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT_DIR}/scripts/buildsystems/vcpkg.cmake")
 
@@ -64,7 +65,7 @@ set(SOURCES
 
 if(WIN32)
     if(CMAKE_BUILD_TYPE STREQUAL "Release")
-        # Windows的Release模式下使用WIN32选项生成窗口应用程序
+        # Windows的Release模式下使用WIN32选项生成窗口应用程序A
         add_executable(${PROJECT_NAME} WIN32 ${SOURCES})
     else()
         add_executable(${PROJECT_NAME} ${SOURCES})
