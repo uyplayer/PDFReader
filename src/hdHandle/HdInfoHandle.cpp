@@ -75,7 +75,7 @@ std::string HdInfoHandle::getMacAddress() {
         for (ifa = ifAddrStruct; ifa != nullptr; ifa = ifa->ifa_next) {
             if (ifa->ifa_addr->sa_family == AF_LINK) {
                 struct sockaddr_dl* sdl = (struct sockaddr_dl*)ifa->ifa_addr;
-                if (sdl->sdl_type == IFT_ETHER && (strcmp(ifa->ifa_name, "en0") == 0)) {
+                if (sdl->sdl_type == AF_LINK && (strcmp(ifa->ifa_name, "en0") == 0)) {
                     unsigned char *ptr = (unsigned char*)LLADDR(sdl);
                     std::ostringstream oss;
                     oss << std::hex << std::uppercase << std::setfill('0');

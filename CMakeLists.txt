@@ -3,7 +3,9 @@ project(PDFGlimpse)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+if(${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Zc:__cplusplus")
+endif()
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
@@ -22,11 +24,10 @@ set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT_DIR}/scripts/buildsystems/vcpkg.cmake")
 if(${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
 #    set(CMAKE_PREFIX_PATH "D:/software/Qt/6.7.2/msvc2019_64")
     set(CMAKE_PREFIX_PATH "D:/Software/Qt/6.7.2/msvc2019_64")
-
 elseif(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
     set(CMAKE_PREFIX_PATH "")
 elseif(${CMAKE_SYSTEM_NAME} STREQUAL "Darwin")
-    set(CMAKE_PREFIX_PATH "")
+    set(CMAKE_PREFIX_PATH "/Users/uyplayer/Qt/6.5.3/macos")
 endif()
 
 find_package(Qt6 REQUIRED COMPONENTS
@@ -72,8 +73,10 @@ if(WIN32)
     endif()
 elseif(APPLE)
     message(STATUS "APPLE")
+    add_executable(${PROJECT_NAME} ${SOURCES})
 else()
     message(STATUS "LINUX")
+    add_executable(${PROJECT_NAME} ${SOURCES})
 endif()
 
 
