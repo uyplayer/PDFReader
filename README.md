@@ -31,3 +31,8 @@
 - CMAKE_PREFIX_PATH 修改为指定QT安装目录下对应QT类库和源码（比如D:/software/Qt/6.7.2/mingw_64）
 ### 设置环境变量
 - QT安装目录下对应QT类库和源码下bin目录添加到环境变量（比如D:\software\Qt\6.7.2\mingw_64\bin）
+
+
+## 加密解密工具
+
+(加密解密工具)[https://github.com/uyplayer/PDFEncrypter]
